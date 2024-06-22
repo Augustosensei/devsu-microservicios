@@ -10,19 +10,17 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-	@Table(name = "cliente")
-	@Getter
-	@Setter
-public class Cliente extends Persona{
+@Table(name = "cliente")
+@Getter
+@Setter
+public class Cliente extends Persona {
 
-	
-	   @Id
-	   @GeneratedValue(strategy = GenerationType.IDENTITY)
-	   @Column(name = "id_cliente")
-	   private Integer idCliente;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_cliente")
+	private Integer idCliente;
 
-	    private String clave;
-	    private boolean estado;
-	
-	
+	private String clave;
+	private boolean estado;
+
 }

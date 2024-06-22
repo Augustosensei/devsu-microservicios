@@ -8,10 +8,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-	
-	  @ExceptionHandler(FondosNoEncontradosException.class)
-	    public ResponseEntity<String> handleResourceNotFoundException(FondosNoEncontradosException ex) {
-	        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
-	    }
-	
+	@ExceptionHandler(FondosNoEncontradosException.class)
+	public ResponseEntity<String> handleResourceNotFoundException(FondosNoEncontradosException ex) {
+		return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+	}
+
 }

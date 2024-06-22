@@ -9,11 +9,11 @@ import lombok.Data;
 @Data
 public class CuentaDTO {
 
-	 private Integer idCuenta;
-	    private Integer numeroCuenta;
-	    private TipoCuentaEnum tipoCuenta;
-	    private BigDecimal saldoInicial;
-	    private Boolean estado;
-	    private ClienteDTO cliente;
-	
+	private Integer idCuenta;
+	private Integer numeroCuenta;
+	private TipoCuentaEnum tipoCuenta;
+	private BigDecimal saldoInicial;
+	private Boolean estado;
+	private ClienteDTO cliente;
+
 }

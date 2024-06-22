@@ -1,14 +1,5 @@
 package com.devsu.cuenta_service.cuenta.controllers;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.devsu.cuenta_service.cuenta.DTO.CuentaDTO;
-import com.devsu.cuenta_service.cuenta.entities.Cuenta;
-import com.devsu.cuenta_service.cuenta.service.ICuentaService;
-
-import lombok.AllArgsConstructor;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.devsu.cuenta_service.cuenta.DTO.CuentaDTO;
+import com.devsu.cuenta_service.cuenta.entities.Cuenta;
+import com.devsu.cuenta_service.cuenta.service.ICuentaService;
 
 @RestController
 @RequestMapping("/api/cuenta")
@@ -40,11 +34,11 @@ public class CuentaController {
 
 	@GetMapping("/{id}")
 	public ResponseEntity<CuentaDTO> obtenerCuentaPorId(@PathVariable final Integer id) {
-		//Cuenta entidad = cuentaService.obtenerPorId(id);
-		//return new ResponseEntity<>(entidad, HttpStatus.OK);
-		
-	     CuentaDTO cuentaDTO = cuentaService.obtenerPorId(id);
-	        return new ResponseEntity<>(cuentaDTO, HttpStatus.OK);
+		// Cuenta entidad = cuentaService.obtenerPorId(id);
+		// return new ResponseEntity<>(entidad, HttpStatus.OK);
+
+		CuentaDTO cuentaDTO = cuentaService.getCuentaPorIdCliente(id);
+		return new ResponseEntity<>(cuentaDTO, HttpStatus.OK);
 	}
 
 	@PostMapping
@@ -64,11 +58,11 @@ public class CuentaController {
 		cuentaService.eliminarPorId(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
-	
-    @GetMapping("/detalle/{id}")
-    public ResponseEntity<CuentaDTO> obtenerCuentaConCliente(@PathVariable Integer id) {
-        CuentaDTO cuentaDTO = cuentaService.getCuentaPorIdCliente(id);
-        return new ResponseEntity<>(cuentaDTO, HttpStatus.OK);
-    }
-	
+
+	@GetMapping("/detalle/{id}")
+	public ResponseEntity<CuentaDTO> obtenerCuentaConCliente(@PathVariable Integer id) {
+		CuentaDTO cuentaDTO = cuentaService.getCuentaPorIdCliente(id);
+		return new ResponseEntity<>(cuentaDTO, HttpStatus.OK);
+	}
+
 }

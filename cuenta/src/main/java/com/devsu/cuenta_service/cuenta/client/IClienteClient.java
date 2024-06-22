@@ -9,7 +9,7 @@ import com.devsu.cuenta_service.cuenta.DTO.ClienteDTO;
 @FeignClient(name = "cliente-service", url = "http://localhost:8080")
 public interface IClienteClient {
 
-	   @GetMapping("/api/cliente/{id}")
-	    ClienteDTO getClienteById(@PathVariable("id") Integer id);
-	
+	@GetMapping("/api/cliente/{id}")
+	ClienteDTO getClienteById(@PathVariable("id") Integer id);
+
 }

@@ -11,12 +11,11 @@ import lombok.Setter;
 @Setter
 public abstract class Persona {
 
-	
-	 protected String nombre;
-	    protected GeneroEnum genero;
-	    protected Integer edad; //fecha nacimiento
-	    protected String identificacion;
-	    protected String telefono;
-	    protected String direccion;
+	protected String nombre;
+	protected GeneroEnum genero;
+	protected Integer edad; // fecha nacimiento
+	protected String identificacion;
+	protected String telefono;
+	protected String direccion;
 
 }

@@ -1,4 +1,4 @@
-package com.devsu.persona_service.persona.controllers;
+package com.devsu.cuenta_service.cuenta.controllers;
 
 import java.util.List;
 
@@ -14,43 +14,47 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.devsu.persona_service.persona.entities.Cliente;
-import com.devsu.persona_service.persona.service.IClienteService;
+import com.devsu.cuenta_service.cuenta.entities.Movimiento;
+import com.devsu.cuenta_service.cuenta.service.IMovimientoService;
+
+
 
 @RestController
-@RequestMapping("/api/cliente")
-public class ClienteController {
+@RequestMapping("/api/movimientos")
+public class MovimientoController {
+
+
 
 	@Autowired
-	private IClienteService clienteService;
+	private IMovimientoService movimientoService;
 
 	@GetMapping
-	public ResponseEntity<List<Cliente>> listarCliente() {
-		List<Cliente> lista = clienteService.listarTodo();
+	public ResponseEntity<List<Movimiento>> listarMovimiento() {
+		List<Movimiento> lista = movimientoService.listarTodo();
 		return new ResponseEntity<>(lista, HttpStatus.OK);
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Cliente> obtenerClientePorId(@PathVariable final Integer id) {
-		Cliente entidad = clienteService.obtenerPorId(id);
+	public ResponseEntity<Movimiento> obtenermMvimientoPorId(@PathVariable final Integer id) {
+		Movimiento entidad = movimientoService.obtenerPorId(id);
 		return new ResponseEntity<>(entidad, HttpStatus.OK);
 	}
 
 	@PostMapping
-	public ResponseEntity<Cliente> guardarCliente(@RequestBody final Cliente cliente) {
-		Cliente entidad = clienteService.acciones(cliente);
+	public ResponseEntity<Movimiento> guardarMovimiento(@RequestBody final Movimiento movimiento) {
+		Movimiento entidad = movimientoService.acciones(movimiento);
 		return new ResponseEntity<>(entidad, HttpStatus.OK);
 	}
 
 	@PutMapping
-	public ResponseEntity<Cliente> modificarCliente(@RequestBody final Cliente cliente) {
-		Cliente entidad = clienteService.acciones(cliente);
+	public ResponseEntity<Movimiento> modificarMovimiento(@RequestBody final Movimiento movimiento) {
+		Movimiento entidad = movimientoService.acciones(movimiento);
 		return new ResponseEntity<>(entidad, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> eliminarClientePorId(@PathVariable final Integer id) {
-		clienteService.eliminarPorId(id);
+	public ResponseEntity<Void> eliminarMovimientoPorId(@PathVariable final Integer id) {
+		movimientoService.eliminarPorId(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 

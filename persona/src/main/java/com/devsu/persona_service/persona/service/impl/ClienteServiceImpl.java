@@ -13,18 +13,17 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class ClienteServiceImpl implements IClienteService {
-	
-	
+
 	private IClienteRepository clienteRepository;
-	
+
 	public List<Cliente> listarTodo() {
-		
+
 		return clienteRepository.findAll();
 	}
 
 	@Override
 	public Cliente obtenerPorId(Integer id) {
-		
+
 		return clienteRepository.findById(id).orElse(null);
 	}
 
@@ -36,7 +35,7 @@ public class ClienteServiceImpl implements IClienteService {
 	@Override
 	public void eliminarPorId(Integer id) {
 		clienteRepository.deleteById(id);
-		
+
 	}
 
 }

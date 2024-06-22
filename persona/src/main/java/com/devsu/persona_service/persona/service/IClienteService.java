@@ -6,12 +6,11 @@ import com.devsu.persona_service.persona.entities.Cliente;
 
 public interface IClienteService {
 
-	
-	 List<Cliente> listarTodo();
+	List<Cliente> listarTodo();
 
-		Cliente obtenerPorId(final Integer id);
+	Cliente obtenerPorId(final Integer id);
 
-		Cliente acciones(final Cliente c);
+	Cliente acciones(final Cliente c);
 
-		void eliminarPorId(final Integer id);
+	void eliminarPorId(final Integer id);
 }
