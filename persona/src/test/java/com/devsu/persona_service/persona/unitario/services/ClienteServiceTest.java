@@ -1,4 +1,4 @@
-package com.devsu.persona_service.persona.services;
+package com.devsu.persona_service.persona.unitario.services;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
