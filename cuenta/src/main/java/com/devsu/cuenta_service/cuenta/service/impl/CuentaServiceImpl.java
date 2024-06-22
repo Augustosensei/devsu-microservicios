@@ -1,7 +1,5 @@
 package com.devsu.cuenta_service.cuenta.service.impl;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 import com.devsu.cuenta_service.cuenta.DTO.ClienteDTO;
@@ -20,10 +18,9 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class CuentaServiceImpl extends CrudServiceImpl<Cuenta, Integer> implements ICuentaService {
 
-
 	private ICuentaRepository cuentaRepository;
 	private IClienteClient clienteClient;
-	
+
 	@Override
 	public IRepository<Cuenta, Integer> getRepo() {
 		return cuentaRepository;
@@ -48,9 +45,5 @@ public class CuentaServiceImpl extends CrudServiceImpl<Cuenta, Integer> implemen
 		return cuentaDTO;
 
 	}
-
-
-
-
 
 }

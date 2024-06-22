@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.devsu.cuenta_service.cuenta.entities.Cuenta;
 import com.devsu.cuenta_service.cuenta.entities.Movimiento;
 import com.devsu.cuenta_service.cuenta.exception.FondosNoEncontradosException;
-import com.devsu.cuenta_service.cuenta.repository.ICuentaRepository;
 import com.devsu.cuenta_service.cuenta.repository.IMovimientoRepository;
 import com.devsu.cuenta_service.cuenta.repository.plantilla.IRepository;
 import com.devsu.cuenta_service.cuenta.service.ICuentaService;
@@ -21,7 +20,6 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class MovimientoServiceImpl extends CrudServiceImpl<Movimiento, Integer> implements IMovimientoService {
 
-	
 	private IMovimientoRepository movimientoRepository;
 	private ICuentaService cuentaService;
 
@@ -33,74 +31,28 @@ public class MovimientoServiceImpl extends CrudServiceImpl<Movimiento, Integer> 
 	@Override
 	public void realizarMovimiento(Movimiento movimiento) {
 
-/*
-		 Cuenta cuenta = cuentaService.obtenerPorId(movimiento.getCuenta().getIdCuenta());
+		Cuenta cuenta = cuentaService.obtenerPorId(movimiento.getCuenta().getIdCuenta());
 
-		    if (cuenta.getIdCuenta() == null) {
-		        throw new IllegalArgumentException("La cuenta debe tener un ID válido antes de asociarla a un movimiento.");
-		    }
-		    
-		    
+		if (cuenta.getIdCuenta() == null) {
+			throw new IllegalArgumentException("La cuenta debe tener un ID válido antes de asociarla a un movimiento.");
+		}
 
-		    BigDecimal saldoInicial = cuenta.getSaldoInicial() != null ? cuenta.getSaldoInicial() : BigDecimal.ZERO;
-		    BigDecimal nuevoSaldoCuenta = saldoInicial.add(movimiento.getValor());
-		    
-		    
-		    if (nuevoSaldoCuenta.compareTo(BigDecimal.ZERO) < 0) {
-		      
-		        nuevoSaldoCuenta = saldoInicial.subtract(movimiento.getValor());
+		BigDecimal saldoInicial = cuenta.getSaldoInicial() != null ? cuenta.getSaldoInicial() : BigDecimal.ZERO;
+		BigDecimal nuevoSaldoCuenta = saldoInicial.add(movimiento.getValor());
 
-		        if (nuevoSaldoCuenta.compareTo(BigDecimal.ZERO) < 0) {
-		            throw new FondosNoEncontradosException("Saldo no disponible.");
-		        }
-		    }
-		    
-		    /*
-		    
-		    if ( nuevoSaldoCuenta.compareTo(BigDecimal.ZERO) < 0) {
-		        throw new FondosNoEncontradosException("Saldo no disponible.");
-		    }
-		    
-		    cuenta.setSaldoInicial(nuevoSaldoCuenta);
+		if (nuevoSaldoCuenta.compareTo(BigDecimal.ZERO) < 0) {
+			throw new FondosNoEncontradosException("Saldo no disponible.");
+		}
 
-		   
-		    cuentaService.acciones(cuenta);
+		cuenta.setSaldoInicial(nuevoSaldoCuenta);
+		cuentaService.acciones(cuenta);
 
-		    
-		
-		    LocalDateTime fechaActual = LocalDateTime.now();
-		    
-		    movimiento.setFecha(fechaActual);
-		    movimiento.setSaldo(nuevoSaldoCuenta);
-		    movimientoRepository.save(movimiento);
-		*/
+		LocalDateTime fechaActual = LocalDateTime.now();
 
-		
-		 Cuenta cuenta = cuentaService.obtenerPorId(movimiento.getCuenta().getIdCuenta());
+		movimiento.setFecha(fechaActual);
+		movimiento.setSaldo(nuevoSaldoCuenta);
+		movimientoRepository.save(movimiento);
 
-		    if (cuenta.getIdCuenta() == null) {
-		        throw new IllegalArgumentException("La cuenta debe tener un ID válido antes de asociarla a un movimiento.");
-		    }
-
-		    BigDecimal saldoInicial = cuenta.getSaldoInicial() != null ? cuenta.getSaldoInicial() : BigDecimal.ZERO;
-		    BigDecimal nuevoSaldoCuenta = saldoInicial.add(movimiento.getValor());
-
-		    if (nuevoSaldoCuenta.compareTo(BigDecimal.ZERO) < 0) {
-		        throw new FondosNoEncontradosException("Saldo no disponible.");
-		    }
-
-		    cuenta.setSaldoInicial(nuevoSaldoCuenta);
-		    cuentaService.acciones(cuenta);
-
-		    LocalDateTime fechaActual = LocalDateTime.now();
-
-		    movimiento.setFecha(fechaActual);
-		    movimiento.setSaldo(nuevoSaldoCuenta);
-		    movimientoRepository.save(movimiento);
-		
 	}
-	
-	
-	
-	
+
 }

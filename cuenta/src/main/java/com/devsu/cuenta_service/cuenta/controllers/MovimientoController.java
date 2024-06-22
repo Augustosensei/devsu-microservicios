@@ -18,13 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.devsu.cuenta_service.cuenta.entities.Movimiento;
 import com.devsu.cuenta_service.cuenta.service.IMovimientoService;
 
-
-
 @RestController
 @RequestMapping("/api/movimientos")
 public class MovimientoController {
-
-
 
 	@Autowired
 	private IMovimientoService movimientoService;
@@ -44,7 +40,7 @@ public class MovimientoController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.OK)
 	public void guardarMovimiento(@RequestBody final Movimiento movimiento) {
-		 movimientoService.realizarMovimiento(movimiento);	
+		movimientoService.realizarMovimiento(movimiento);
 	}
 
 	@PutMapping
