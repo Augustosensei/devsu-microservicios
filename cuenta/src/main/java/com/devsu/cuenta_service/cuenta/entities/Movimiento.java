@@ -3,6 +3,10 @@ package com.devsu.cuenta_service.cuenta.entities;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,6 +29,7 @@ public class Movimiento {
 	@Column(name = "id_movimientos")
 	protected Integer idMovimiento;
 
+	@JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
 	private LocalDateTime fecha;
 	private String tipoMovimiento;
 	private BigDecimal valor;

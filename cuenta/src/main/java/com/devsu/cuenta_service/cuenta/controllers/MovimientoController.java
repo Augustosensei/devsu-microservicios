@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.devsu.cuenta_service.cuenta.entities.Movimiento;
@@ -41,9 +42,9 @@ public class MovimientoController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Movimiento> guardarMovimiento(@RequestBody final Movimiento movimiento) {
-		Movimiento entidad = movimientoService.acciones(movimiento);
-		return new ResponseEntity<>(entidad, HttpStatus.OK);
+	@ResponseStatus(HttpStatus.OK)
+	public void guardarMovimiento(@RequestBody final Movimiento movimiento) {
+		 movimientoService.realizarMovimiento(movimiento);	
 	}
 
 	@PutMapping
