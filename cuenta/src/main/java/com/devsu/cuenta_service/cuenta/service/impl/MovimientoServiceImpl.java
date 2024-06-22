@@ -46,7 +46,7 @@ public class MovimientoServiceImpl extends CrudServiceImpl<Movimiento, Integer> 
 		    BigDecimal nuevoSaldoCuenta = saldoInicial.add(movimiento.getValor());
 		    
 		    if ( nuevoSaldoCuenta.compareTo(BigDecimal.ZERO) < 0) {
-		        throw new FondosNoEncontradosException("Fondos insuficientes en la cuenta.");
+		        throw new FondosNoEncontradosException("Saldo no disponible.");
 		    }
 		    
 		    cuenta.setSaldoInicial(nuevoSaldoCuenta);
