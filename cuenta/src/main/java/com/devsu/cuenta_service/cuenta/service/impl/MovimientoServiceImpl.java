@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.devsu.cuenta_service.cuenta.entities.Cuenta;
 import com.devsu.cuenta_service.cuenta.entities.Movimiento;
+import com.devsu.cuenta_service.cuenta.exception.FondosNoEncontradosException;
 import com.devsu.cuenta_service.cuenta.repository.ICuentaRepository;
 import com.devsu.cuenta_service.cuenta.repository.IMovimientoRepository;
 import com.devsu.cuenta_service.cuenta.repository.plantilla.IRepository;
@@ -38,9 +39,16 @@ public class MovimientoServiceImpl extends CrudServiceImpl<Movimiento, Integer> 
 		    if (cuenta.getIdCuenta() == null) {
 		        throw new IllegalArgumentException("La cuenta debe tener un ID válido antes de asociarla a un movimiento.");
 		    }
+		    
+		    
 
 		    BigDecimal saldoInicial = cuenta.getSaldoInicial() != null ? cuenta.getSaldoInicial() : BigDecimal.ZERO;
 		    BigDecimal nuevoSaldoCuenta = saldoInicial.add(movimiento.getValor());
+		    
+		    if ( nuevoSaldoCuenta.compareTo(BigDecimal.ZERO) < 0) {
+		        throw new FondosNoEncontradosException("Fondos insuficientes en la cuenta.");
+		    }
+		    
 		    cuenta.setSaldoInicial(nuevoSaldoCuenta);
 
 		   
@@ -53,6 +61,8 @@ public class MovimientoServiceImpl extends CrudServiceImpl<Movimiento, Integer> 
 		    movimiento.setFecha(fechaActual);
 		    movimiento.setSaldo(nuevoSaldoCuenta);
 		    movimientoRepository.save(movimiento);
+		
+
 		
 	}
 	
