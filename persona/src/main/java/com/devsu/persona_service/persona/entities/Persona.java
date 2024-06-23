@@ -16,7 +16,7 @@ public abstract class Persona {
 
 	protected String nombre;
 	protected GeneroEnum genero;
-	
+
 	@JsonFormat(pattern = "dd-MM-yyyy")
 	protected LocalDate fechaNacimiento;
 	protected String identificacion;

@@ -13,23 +13,21 @@ import com.devsu.persona_service.persona.service.impl.ClienteServiceImpl;
 @SpringBootTest
 public class ClienteServiceTestIntegracion {
 
-	
-	   @Autowired
-	    private ClienteServiceImpl clienteService;
+	@Autowired
+	private ClienteServiceImpl clienteService;
 
-	
-	    @Test
-	    public void testGuardarCliente() {
-	        Cliente cliente = new Cliente();
-	        cliente.setNombre("Test Cliente");
-	        cliente.setClave("123");
-	        cliente.setGenero(GeneroEnum.Femenino);
-	        cliente.setEstado(true);
+	@Test
+	public void testGuardarCliente() {
+		Cliente cliente = new Cliente();
+		cliente.setNombre("Test Cliente");
+		cliente.setClave("123");
+		cliente.setGenero(GeneroEnum.Femenino);
+		cliente.setEstado(true);
 
-	        Cliente clienteGuardado = clienteService.acciones(cliente);
+		Cliente clienteGuardado = clienteService.acciones(cliente);
 
-	        assertThat(clienteGuardado).isNotNull();
-	        assertThat(clienteGuardado.getClave()).isEqualTo("123");
-	    }
-	
+		assertThat(clienteGuardado).isNotNull();
+		assertThat(clienteGuardado.getClave()).isEqualTo("123");
+	}
+
 }

@@ -2,7 +2,6 @@ package com.devsu.cuenta_service.cuenta.entities;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

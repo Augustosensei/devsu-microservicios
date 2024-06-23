@@ -56,9 +56,8 @@ public class ClienteController {
 
 	@GetMapping("/{idCliente}/nombre")
 	public ResponseEntity<String> obtenerNombreCliente(@PathVariable final Integer idCliente) {
-	    String nombre = clienteService.obtenerNombreCliente(idCliente);
-	    return new ResponseEntity<>(nombre, HttpStatus.OK);
+		String nombre = clienteService.obtenerNombreCliente(idCliente);
+		return new ResponseEntity<>(nombre, HttpStatus.OK);
 	}
 
-	
 }

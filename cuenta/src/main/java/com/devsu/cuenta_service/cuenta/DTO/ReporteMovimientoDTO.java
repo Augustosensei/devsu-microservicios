@@ -1,9 +1,6 @@
 package com.devsu.cuenta_service.cuenta.DTO;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
-
-import com.devsu.cuenta_service.cuenta.enums.TipoCuentaEnum;
 
 import lombok.Builder;
 import lombok.Value;
@@ -12,7 +9,6 @@ import lombok.Value;
 @Builder
 public class ReporteMovimientoDTO {
 
-	
 	private String nombre;
 	private String fecha;
 	private Integer numeroCuenta;
@@ -21,5 +17,5 @@ public class ReporteMovimientoDTO {
 	private Boolean estado;
 	private BigDecimal movimiento;
 	private BigDecimal saldoDisponible;
-	
+
 }

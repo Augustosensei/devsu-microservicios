@@ -13,6 +13,6 @@ public interface IClienteService {
 	Cliente acciones(final Cliente c);
 
 	void eliminarPorId(final Integer id);
-	
+
 	String obtenerNombreCliente(Integer idCliente);
 }
