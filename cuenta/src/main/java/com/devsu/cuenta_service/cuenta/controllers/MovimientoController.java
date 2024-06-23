@@ -1,8 +1,11 @@
 package com.devsu.cuenta_service.cuenta.controllers;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,9 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.devsu.cuenta_service.cuenta.DTO.ReporteMovimientoDTO;
 import com.devsu.cuenta_service.cuenta.entities.Movimiento;
 import com.devsu.cuenta_service.cuenta.service.IMovimientoService;
 
@@ -54,5 +59,18 @@ public class MovimientoController {
 		movimientoService.eliminarPorId(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
+	
+	  @GetMapping("/reportes")
+	    public ResponseEntity<List<ReporteMovimientoDTO>> reporteMovimientoPorClienteYFecha(
+	            @RequestParam("idCliente") Integer idCliente,
+	            @RequestParam("fechaInicio") LocalDate fechaInicio,
+	            @RequestParam("fechaFin") LocalDate fechaFin
+	    		) {
+	        
+	        List<ReporteMovimientoDTO> movimientos = movimientoService.listarMovimientosPorClienteYFecha(idCliente, fechaInicio ,fechaFin);
+	        return ResponseEntity.ok(movimientos);
+	    }
+	
+	
 
 }

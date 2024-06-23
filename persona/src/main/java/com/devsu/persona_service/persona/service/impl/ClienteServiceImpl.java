@@ -38,4 +38,13 @@ public class ClienteServiceImpl implements IClienteService {
 
 	}
 
+	@Override
+	public String obtenerNombreCliente(Integer idCliente) {
+		
+		Cliente cliente = clienteRepository.findFirstByIdCliente(idCliente);
+		String nombre = cliente != null ? cliente.getNombre() : null;
+
+		return nombre;
+	}
+
 }

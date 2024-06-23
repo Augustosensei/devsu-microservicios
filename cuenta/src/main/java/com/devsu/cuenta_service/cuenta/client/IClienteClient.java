@@ -12,4 +12,7 @@ public interface IClienteClient {
 	@GetMapping("/api/cliente/{id}")
 	ClienteDTO getClienteById(@PathVariable("id") Integer id);
 
+	
+	@GetMapping("/api/cliente/{idCliente}/nombre")
+    String obtenerNombreCliente(@PathVariable("idCliente") Integer idCliente);
 }
