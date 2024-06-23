@@ -81,9 +81,14 @@ public class MovimientoServiceImpl extends CrudServiceImpl<Movimiento, Integer> 
 			String fechaFormateada = fechaLocalDateTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
 			ReporteMovimientoDTO reporteDTO = ReporteMovimientoDTO.builder().nombre(nombreCliente)
-					.estado((Boolean) consulta[2]).numeroCuenta((Integer) consulta[3])
-					.saldoInicial((BigDecimal) consulta[4]).tipo(tipoCuentaEnum.name()).fecha(fechaFormateada)
-					.movimiento((BigDecimal) consulta[10]).saldoDisponible((BigDecimal) consulta[8]).build();
+					.estado((Boolean) consulta[2])
+					.numeroCuenta((Integer) consulta[3])
+					.saldoInicial((BigDecimal) consulta[4])
+					.tipo(tipoCuentaEnum.name())
+					.fecha(fechaFormateada)
+					.movimiento((BigDecimal) consulta[10])
+					.saldoDisponible((BigDecimal) consulta[8])
+					.build();
 
 			listarMovimientos.add(reporteDTO);
 		});
